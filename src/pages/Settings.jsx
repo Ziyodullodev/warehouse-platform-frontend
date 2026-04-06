@@ -107,6 +107,20 @@ const Settings = () => {
           </div>
         </div>
 
+        {/* Link to Clients Page */}
+        <div 
+          onClick={() => navigate('/clients')}
+          className="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-transparent hover:border-primary/30 transition-colors cursor-pointer group flex items-center justify-between"
+        >
+          <div>
+            <h4 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-1 group-hover:text-primary transition-colors">{t('settings.clientsTitle')}</h4>
+            <p className="text-xs text-on-surface-variant">{t('settings.clientsDesc')}</p>
+          </div>
+          <div className="w-10 h-10 rounded-full bg-surface-container-high group-hover:bg-primary/10 flex items-center justify-center transition-colors">
+            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">arrow_forward</span>
+          </div>
+        </div>
+
         {/* Destructive Zone */}
         <div className="bg-error-container/5 rounded-2xl p-6 border border-error/20">
            <h4 className="text-sm font-bold text-error uppercase tracking-wider mb-2">{t('settings.dangerZone')}</h4>

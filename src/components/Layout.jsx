@@ -23,9 +23,6 @@ const Layout = () => {
         <NavLink to="/add-item" className={({isActive}) => `w-12 h-12 flex flex-col items-center justify-center rounded-xl transition-all ${isActive ? 'bg-blue-100 text-blue-700 shadow-sm' : 'text-slate-500 hover:bg-slate-200/50 hover:text-slate-700'}`} title={t('nav.addItem')}>
           <span className="material-symbols-outlined text-2xl">add_box</span>
         </NavLink>
-        <NavLink to="/clients" className={({isActive}) => `w-12 h-12 flex flex-col items-center justify-center rounded-xl transition-all ${isActive ? 'bg-blue-100 text-blue-700 shadow-sm' : 'text-slate-500 hover:bg-slate-200/50 hover:text-slate-700'}`} title={t('nav.clients')}>
-          <span className="material-symbols-outlined text-2xl">groups</span>
-        </NavLink>
         <div className="flex-1"></div>
         <NavLink to="/settings" className={({isActive}) => `w-12 h-12 flex flex-col items-center justify-center rounded-xl transition-all ${isActive ? 'bg-blue-100 text-blue-700 shadow-sm' : 'text-slate-500 hover:bg-slate-200/50 hover:text-slate-700'}`} title={t('nav.settings')}>
           <span className="material-symbols-outlined text-2xl">settings</span>
@@ -88,11 +85,6 @@ const Layout = () => {
         <NavLink to="/add-item" className={({isActive}) => `flex flex-col items-center justify-center rounded-xl px-3 py-1 transition-transform active:scale-90 ${isActive ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300' : 'text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400'}`}>
           <span className="material-symbols-outlined text-xl">add_box</span>
           <span className="text-[10px] font-medium mt-0.5">{t('nav.addItem')}</span>
-        </NavLink>
-
-        <NavLink to="/clients" className={({isActive}) => `flex flex-col items-center justify-center rounded-xl px-3 py-1 transition-transform active:scale-90 ${isActive ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300' : 'text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400'}`}>
-          <span className="material-symbols-outlined text-xl">groups</span>
-          <span className="text-[10px] font-medium mt-0.5">{t('nav.clients')}</span>
         </NavLink>
 
         <NavLink to="/settings" className={({isActive}) => `flex flex-col items-center justify-center rounded-xl px-3 py-1 transition-transform active:scale-90 ${isActive ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300' : 'text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400'}`}>
