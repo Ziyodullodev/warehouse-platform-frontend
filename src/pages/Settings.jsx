@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Settings = () => {
   const [notifications, setNotifications] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem('isAuthenticated');
+    // Force reload so App component re-syncs state
+    window.location.href = '/login';
+  };
 
   return (
     <div className="px-4 py-8 md:px-8 max-w-3xl w-full">
@@ -89,7 +97,10 @@ const Settings = () => {
         <div className="bg-error-container/5 rounded-2xl p-6 border border-error/20">
            <h4 className="text-sm font-bold text-error uppercase tracking-wider mb-2">Danger Zone</h4>
            <p className="text-xs text-on-surface-variant mb-4">Actions here are irreversible and can lead to data loss.</p>
-           <button className="px-4 py-2 bg-error text-white rounded-lg text-sm font-bold shadow-sm shadow-error/20 hover:bg-error/90 transition-colors">
+           <button 
+             onClick={handleSignOut}
+             className="px-4 py-2 bg-error text-white rounded-lg text-sm font-bold shadow-sm shadow-error/20 hover:bg-error/90 transition-colors active:scale-95"
+           >
               Sign Out
            </button>
         </div>
