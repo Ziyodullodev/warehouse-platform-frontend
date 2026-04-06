@@ -8,6 +8,7 @@ import Settings from './pages/Settings';
 import Notifications from './pages/Notifications';
 import Login from './pages/Login';
 import Clients from './pages/Clients';
+import Categories from './pages/Categories';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="inventory" element={<Inventory />} />
           <Route path="add-item" element={<AddItem />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="settings/categories" element={<Categories />} />
           <Route path="notifications" element={<Notifications />} />
           <Route path="clients" element={<Clients />} />
         </Route>

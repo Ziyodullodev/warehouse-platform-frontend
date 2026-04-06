@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,7 +43,7 @@ const Login = () => {
             <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center mx-auto mb-8 backdrop-blur-md border border-white/20">
                <span className="material-symbols-outlined text-4xl">architecture</span>
             </div>
-            <h1 className="text-5xl font-bold tracking-tighter mb-4 uppercase">Industrial Architect</h1>
+            <h1 className="text-5xl font-bold tracking-tighter mb-4 uppercase">{t('nav.appFullName')}</h1>
             <p className="text-xl text-white/70 font-medium leading-relaxed">Precision-engineered warehouse management for the modern industrial age.</p>
          </div>
       </div>
@@ -54,13 +56,13 @@ const Login = () => {
             <div className="md:hidden w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-primary/20">
                <span className="material-symbols-outlined text-white">architecture</span>
             </div>
-            <h2 className="text-3xl font-bold text-on-surface tracking-tight mb-2">Welcome Back</h2>
-            <p className="text-on-surface-variant text-sm">Please enter your workspace credentials to continue.</p>
+            <h2 className="text-3xl font-bold text-on-surface tracking-tight mb-2">{t('login.welcome')}</h2>
+            <p className="text-on-surface-variant text-sm">{t('login.subtitle')}</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="relative">
-              <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Office Email</label>
+              <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('login.email')}</label>
               <div className="relative">
                 <span className="material-symbols-outlined absolute left-0 bottom-3 text-outline-variant">mail</span>
                 <input 
@@ -69,13 +71,13 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 pl-8 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-base font-medium text-on-surface"
-                  placeholder="name@company.com"
+                  placeholder={t('login.emailPlaceholder')}
                 />
               </div>
             </div>
 
             <div className="relative">
-              <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Secure Password</label>
+              <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('login.password')}</label>
               <div className="relative">
                 <span className="material-symbols-outlined absolute left-0 bottom-3 text-outline-variant">lock</span>
                 <input 
@@ -84,7 +86,7 @@ const Login = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 pl-8 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-base font-medium text-on-surface"
-                  placeholder="••••••••"
+                  placeholder={t('login.passwordPlaceholder')}
                 />
               </div>
             </div>
@@ -92,9 +94,9 @@ const Login = () => {
             <div className="flex items-center justify-between py-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input type="checkbox" className="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary/20 cursor-pointer" />
-                <span className="text-xs font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Keep me signed in</span>
+                <span className="text-xs font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">{t('login.keepSignedIn')}</span>
               </label>
-              <a href="#" className="text-xs font-bold text-primary hover:underline underline-offset-4">Forgot ID?</a>
+              <a href="#" className="text-xs font-bold text-primary hover:underline underline-offset-4">{t('login.forgotId')}</a>
             </div>
 
             <button 
@@ -106,7 +108,7 @@ const Login = () => {
                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
               ) : (
                 <>
-                  <span>Sign In to Dashboard</span>
+                  <span>{t('login.signInBtn')}</span>
                   <span className="material-symbols-outlined text-[20px]">login</span>
                 </>
               )}
@@ -114,8 +116,7 @@ const Login = () => {
           </form>
 
           <div className="mt-12 text-center text-xs text-on-surface-variant font-medium">
-            <p>© 2026 Industrial Architect Platform.</p>
-            <p className="mt-1">Proprietary Software • Secure Enclave Active</p>
+            <p>{t('login.footer')}</p>
           </div>
 
         </div>

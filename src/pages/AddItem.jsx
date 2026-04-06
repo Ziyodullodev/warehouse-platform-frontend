@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ScannerModal from '../components/ScannerModal';
 
 const AddItem = () => {
+  const { t } = useTranslation();
   const [step, setStep] = useState(1);
   const [imagePreview, setImagePreview] = useState(null);
   const [skuCode, setSkuCode] = useState('');
@@ -52,8 +54,8 @@ const AddItem = () => {
       </div>
 
       <div className="mb-10 text-center mt-2 md:mt-0 duration-300 animate-in fade-in slide-in-from-bottom-2">
-        <span className="text-on-surface-variant font-medium tracking-wider uppercase text-xs">New Inventory Entry</span>
-        <h2 className="text-3xl font-semibold text-on-surface tracking-tight mt-1">Add Product</h2>
+        <span className="text-on-surface-variant font-medium tracking-wider uppercase text-xs">{t('addItem.subtitle')}</span>
+        <h2 className="text-3xl font-semibold text-on-surface tracking-tight mt-1">{t('addItem.title')}</h2>
         
         {/* Step Indicator */}
         <div className="mt-8 flex items-center justify-center gap-2">
@@ -83,9 +85,9 @@ const AddItem = () => {
           </div>
         </div>
         <p className="mt-4 text-sm font-medium text-on-surface-variant transition-all">
-          {step === 1 && "Step 1 of 3: Basic Info"}
-          {step === 2 && "Step 2 of 3: Pricing & Logistics"}
-          {step === 3 && "Step 3 of 3: Review & Publish"}
+          {step === 1 && t('addItem.step1')}
+          {step === 2 && t('addItem.step2')}
+          {step === 3 && t('addItem.step3')}
         </p>
       </div>
 
@@ -108,8 +110,8 @@ const AddItem = () => {
                   ) : (
                     <>
                       <span className="material-symbols-outlined text-4xl text-outline-variant mb-2 group-hover:text-primary transition-colors">cloud_upload</span>
-                      <p className="text-sm font-medium text-on-surface-variant">Drag product image or <span className="text-primary">browse</span></p>
-                      <p className="text-xs text-outline mt-1">PNG, JPG up to 10MB</p>
+                      <p className="text-sm font-medium text-on-surface-variant">{t('addItem.dragImage')} <span className="text-primary">{t('addItem.browse')}</span></p>
+                      <p className="text-xs text-outline mt-1">PNG, JPG {t('addItem.upTo')}</p>
                     </>
                   )}
                 </label>
@@ -117,11 +119,11 @@ const AddItem = () => {
               
               <div className="space-y-6">
                 <div className="relative">
-                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Product Name</label>
+                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('addItem.productName')}</label>
                   <input className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-lg font-medium text-on-surface placeholder:text-outline-variant/60" placeholder="e.g. Industrial Grade Valve" type="text" />
                 </div>
                 <div className="relative">
-                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">SKU Number</label>
+                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('addItem.skuNumber')}</label>
                   <div className="relative">
                     <input 
                       value={skuCode}
@@ -139,19 +141,18 @@ const AddItem = () => {
                   </div>
                 </div>
                 <div className="relative group">
-                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Category</label>
-                  <select className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-lg font-medium text-on-surface appearance-none cursor-pointer">
-                    <option disabled selected value="">Select Category</option>
-                    <option>Mechanical Parts</option>
-                    <option>Electrical components</option>
-                    <option>Fasteners</option>
-                    <option>Hydraulics</option>
+                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('addItem.category')}</label>
+                  <select className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-lg font-medium text-on-surface appearance-none cursor-pointer" defaultValue="">
+                    <option disabled value="">{t('addItem.selectCategory')}</option>
+                    <option>{t('addItem.mechanical')}</option>
+                    <option>{t('addItem.electrical')}</option>
+                    <option>{t('addItem.hardware')}</option>
                   </select>
                   <span className="material-symbols-outlined absolute right-0 bottom-3 pointer-events-none text-outline-variant group-focus-within:text-primary transition-colors">expand_more</span>
                 </div>
                 <div className="relative">
-                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">Description</label>
-                  <textarea className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-lg font-medium text-on-surface placeholder:text-outline-variant/60 resize-none" placeholder="Detailed technical specifications..." rows="3"></textarea>
+                  <label className="block text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-1">{t('addItem.description')}</label>
+                  <textarea className="w-full bg-transparent border-0 border-b border-outline-variant hover:border-primary/50 py-3 focus:ring-0 focus:outline-none focus:border-b-2 focus:border-primary transition-all text-lg font-medium text-on-surface placeholder:text-outline-variant/60 resize-none" placeholder="..." rows="3"></textarea>
                 </div>
               </div>
             </div>
@@ -249,7 +250,7 @@ const AddItem = () => {
                 className="w-full sm:w-auto sm:flex-1 px-6 py-4 rounded-xl text-on-surface font-semibold bg-surface-container-high hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2 active:scale-95"
              >
                <span className="material-symbols-outlined text-[20px]">arrow_back</span>
-               Back
+               {t('addItem.goBack')}
              </button>
           )}
 
@@ -257,7 +258,7 @@ const AddItem = () => {
             onClick={handleNext}
             className={`w-full sm:w-auto sm:flex-[2] px-6 py-4 rounded-xl text-white font-bold bg-primary-gradient shadow-lg shadow-primary/20 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${step > 3 ? 'pointer-events-none opacity-80' : ''}`}
           >
-            {step < 3 ? 'Next Step' : 'Publish to Inventory'}
+            {step < 3 ? t('addItem.nextStep') : 'Publish to Inventory'}
             {step < 3 ? (
               <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
             ) : (

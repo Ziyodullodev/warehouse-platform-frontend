@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Clients = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState('');
   const [selectedClient, setSelectedClient] = useState(null);
 
@@ -90,7 +92,7 @@ const Clients = () => {
                   <img src={selectedClient.avatar} alt={selectedClient.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-on-surface">Purchase History</h3>
+                  <h3 className="font-bold text-on-surface">{t('clients.historyTitle')}</h3>
                   <p className="text-xs text-on-surface-variant">{selectedClient.name}</p>
                 </div>
               </div>
@@ -120,7 +122,7 @@ const Clients = () => {
             </div>
 
             <div className="p-6 bg-surface-container-high border-t border-outline-variant/20 flex justify-between items-center">
-               <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest leading-none">Total Value</span>
+               <span className="text-xs font-bold text-on-surface-variant uppercase tracking-widest leading-none">{t('clients.totalValue')}</span>
                <span className="text-xl font-black text-primary leading-none">
                  ${selectedClient.history.reduce((sum, tx) => sum + tx.amount, 0).toLocaleString()}
                </span>
@@ -131,12 +133,12 @@ const Clients = () => {
 
       <div className="mb-8 mt-2 md:mt-0 items-start md:items-end flex flex-col md:flex-row justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-on-surface mb-1">Mijozlar</h1>
-          <p className="text-on-surface-variant text-sm">Professional relationship and financial monitoring.</p>
+          <h1 className="text-3xl font-semibold tracking-tight text-on-surface mb-1">{t('clients.title')}</h1>
+          <p className="text-on-surface-variant text-sm">{t('clients.subtitle')}</p>
         </div>
         <button className="px-6 py-3 bg-primary-gradient text-white rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-primary/20 hover:shadow-xl transition-all active:scale-95">
           <span className="material-symbols-outlined">person_add</span>
-          Add New Client
+          {t('clients.addClient')}
         </button>
       </div>
 
@@ -149,7 +151,7 @@ const Clients = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full bg-surface-container-lowest border border-transparent focus:border-primary transition-all py-4 pl-12 pr-4 rounded-2xl text-base outline-none placeholder:text-outline shadow-sm hover:shadow-md"
-          placeholder="Search by name, company, or ID..." 
+          placeholder={t('clients.searchPlaceholder')} 
           type="text" 
         />
       </div>
@@ -180,11 +182,11 @@ const Clients = () => {
 
             <div className="grid grid-cols-3 gap-3">
                <div className="bg-surface-container p-3 rounded-2xl">
-                 <p className="text-[9px] uppercase font-bold text-on-surface-variant tracking-widest mb-1">Orders</p>
+                 <p className="text-[9px] uppercase font-bold text-on-surface-variant tracking-widest mb-1">{t('clients.orders')}</p>
                  <p className="text-lg font-bold text-on-surface">{client.orders}</p>
                </div>
                <div className="bg-surface-container p-3 rounded-2xl col-span-2 relative overflow-hidden group/debt">
-                 <p className="text-[9px] uppercase font-bold text-on-surface-variant tracking-widest mb-1">Qarzdorlik (Debt)</p>
+                 <p className="text-[9px] uppercase font-bold text-on-surface-variant tracking-widest mb-1">{t('clients.debt')}</p>
                  <p className={`text-lg font-black ${client.debt > 0 ? 'text-error' : 'text-primary'}`}>
                     ${client.debt.toLocaleString()}
                  </p>
@@ -195,14 +197,14 @@ const Clients = () => {
             <div className="flex items-center gap-3 mt-auto pt-2">
                <button className="flex-1 h-12 rounded-xl bg-surface-container-high hover:bg-surface-container-highest flex items-center justify-center gap-2 text-sm font-bold transition-colors">
                  <span className="material-symbols-outlined text-[18px]">mail</span>
-                 Email
+                 {t('clients.emailBtn')}
                </button>
                <button 
                 onClick={() => setSelectedClient(client)}
                 className="flex-1 h-12 rounded-xl bg-primary-gradient text-white flex items-center justify-center gap-2 text-sm font-bold transition-all shadow-md hover:shadow-lg active:scale-95"
                >
                  <span className="material-symbols-outlined text-[18px]">history</span>
-                 Log (Tarix)
+                 {t('clients.logBtn')}
                </button>
             </div>
           </div>

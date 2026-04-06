@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import ScannerModal from '../components/ScannerModal';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
   const [showScanner, setShowScanner] = useState(false);
   const [scannedResult, setScannedResult] = useState(null);
 
@@ -25,30 +29,30 @@ const Dashboard = () => {
 
       {/* Dashboard Header */}
       <div className="mb-8 mt-2 md:mt-0">
-        <h1 className="text-3xl font-semibold tracking-tight text-on-surface mb-1">Operational Overview</h1>
-        <p className="text-on-surface-variant text-sm">Warehouse Section A-12 • Real-time status</p>
+        <h1 className="text-3xl font-semibold tracking-tight text-on-surface mb-1">{t('dashboard.title')}</h1>
+        <p className="text-on-surface-variant text-sm">{t('dashboard.subtitle')}</p>
       </div>
 
       {/* Summary Cards: Bento Grid Style */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-surface-container-lowest p-5 rounded-xl border-b-2 border-transparent shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-primary mb-3 text-3xl">inventory_2</span>
-          <p className="text-on-surface-variant text-xs font-medium mb-1">Total Items</p>
+          <p className="text-on-surface-variant text-xs font-medium mb-1">{t('dashboard.totalItems')}</p>
           <p className="text-2xl font-bold tracking-tight text-on-surface">12,482</p>
         </div>
         <div className="bg-error-container/10 p-5 rounded-xl border-b-2 border-error shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-error mb-3 text-3xl">warning</span>
-          <p className="text-on-error-container text-xs font-medium mb-1">Low Stock Alerts</p>
+          <p className="text-on-error-container text-xs font-medium mb-1">{t('dashboard.lowStock')}</p>
           <p className="text-2xl font-bold tracking-tight text-on-error-container">24</p>
         </div>
         <div className="bg-surface-container-lowest p-5 rounded-xl border-b-2 border-transparent shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-tertiary mb-3 text-3xl">conveyor_belt</span>
-          <p className="text-on-surface-variant text-xs font-medium mb-1">Recent Inbounds</p>
+          <p className="text-on-surface-variant text-xs font-medium mb-1">{t('dashboard.recentInbounds')}</p>
           <p className="text-2xl font-bold tracking-tight text-on-surface">148</p>
         </div>
         <div className="bg-surface-container-lowest p-5 rounded-xl border-b-2 border-transparent shadow-sm hover:shadow-md transition-shadow">
           <span className="material-symbols-outlined text-primary mb-3 text-3xl">payments</span>
-          <p className="text-on-surface-variant text-xs font-medium mb-1">Total Valuation</p>
+          <p className="text-on-surface-variant text-xs font-medium mb-1">{t('dashboard.totalValuation')}</p>
           <p className="text-2xl font-bold tracking-tight text-on-surface">$2.4M</p>
         </div>
       </div>
@@ -58,8 +62,8 @@ const Dashboard = () => {
         {/* Weekly Activity */}
         <div className="md:col-span-2 bg-surface-container-low p-6 rounded-xl shadow-sm">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider">Weekly Activity</h3>
-            <span className="text-xs text-on-surface-variant">Last 7 Days</span>
+            <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider">{t('dashboard.weeklyActivity')}</h3>
+            <span className="text-xs text-on-surface-variant">{t('dashboard.last7Days')}</span>
           </div>
           <div className="flex items-end justify-between h-40 gap-2">
             <div className="w-full bg-primary/20 rounded-t-sm h-[40%] hover:bg-primary/40 transition-colors cursor-pointer"></div>
@@ -77,25 +81,25 @@ const Dashboard = () => {
         
         {/* Stock Status */}
         <div className="bg-surface-container-highest p-6 rounded-xl flex flex-col items-center justify-center shadow-sm">
-          <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 w-full">Stock Status</h3>
+          <h3 className="text-sm font-bold text-on-surface uppercase tracking-wider mb-6 w-full">{t('dashboard.stockStatus')}</h3>
           <div className="relative w-32 h-32 rounded-full border-[16px] border-primary-container flex items-center justify-center">
             <div className="absolute inset-[-16px] rounded-full border-[16px] border-primary border-r-transparent border-b-transparent rotate-45 transition-transform duration-1000 ease-in-out hover:rotate-90"></div>
             <div className="text-center">
               <span className="block text-xl font-bold">84%</span>
-              <span className="text-[10px] uppercase text-on-surface-variant">Healthy</span>
+              <span className="text-[10px] uppercase text-on-surface-variant">{t('dashboard.healthy')}</span>
             </div>
           </div>
           <div className="mt-6 w-full space-y-2">
             <div className="flex justify-between items-center text-xs">
-              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary"></span> In Stock</span>
+              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-primary"></span> {t('dashboard.inStock')}</span>
               <span className="font-semibold">84%</span>
             </div>
             <div className="flex justify-between items-center text-xs">
-              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-tertiary"></span> Low</span>
+              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-tertiary"></span> {t('dashboard.low')}</span>
               <span className="font-semibold">12%</span>
             </div>
             <div className="flex justify-between items-center text-xs">
-              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-error"></span> Out</span>
+              <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-error"></span> {t('dashboard.out')}</span>
               <span className="font-semibold">4%</span>
             </div>
           </div>
@@ -105,16 +109,16 @@ const Dashboard = () => {
       {/* Recent Transactions */}
       <section className="mb-4">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-lg font-bold text-on-surface">Recent Transactions</h2>
-          <button className="text-sm font-medium text-primary hover:underline">View All</button>
+          <h2 className="text-lg font-bold text-on-surface">{t('dashboard.recentTransactions')}</h2>
+          <button className="text-sm font-medium text-primary hover:underline">{t('dashboard.viewAll')}</button>
         </div>
         <div className="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
           <div className="grid grid-cols-4 md:grid-cols-5 px-6 py-4 bg-surface-container text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">
-            <div className="col-span-2 md:col-span-1">Product</div>
-            <div className="hidden md:block">SKU</div>
-            <div>Type</div>
-            <div className="text-right">Qty</div>
-            <div className="text-right hidden md:block">Date</div>
+            <div className="col-span-2 md:col-span-1">{t('dashboard.product')}</div>
+            <div className="hidden md:block">{t('dashboard.sku')}</div>
+            <div>{t('dashboard.type')}</div>
+            <div className="text-right">{t('dashboard.qty')}</div>
+            <div className="text-right hidden md:block">{t('dashboard.date')}</div>
           </div>
           <div className="divide-y divide-surface-container-low">
             {[
@@ -143,13 +147,16 @@ const Dashboard = () => {
       {/* Floating Command Bar */}
       <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 md:bottom-8">
         <div className="flex items-center bg-surface/80 backdrop-blur-md px-4 py-2 rounded-full shadow-lg border border-outline-variant/10 gap-2 hover:shadow-xl transition-shadow cursor-pointer">
-          <button className="p-2 rounded-full hover:bg-surface-variant text-on-surface transition-colors">
+          <button 
+            onClick={() => navigate('/inventory')} 
+            className="p-2 rounded-full hover:bg-surface-variant text-on-surface transition-colors"
+          >
             <span className="material-symbols-outlined">search</span>
           </button>
           <div className="w-px h-6 bg-outline-variant/20"></div>
           <button onClick={() => setShowScanner(true)} className="bg-primary-gradient text-white px-5 py-2 rounded-full flex items-center gap-2 text-sm font-bold shadow-md hover:scale-105 transition-transform active:scale-95">
             <span className="material-symbols-outlined text-sm">barcode_scanner</span>
-            <span>Scan Item</span>
+            <span>{t('dashboard.scanItem')}</span>
           </button>
         </div>
       </div>
