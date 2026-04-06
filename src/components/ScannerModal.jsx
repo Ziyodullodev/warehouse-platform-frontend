@@ -20,6 +20,10 @@ const ScannerModal = ({ onClose, onScan }) => {
 
     scanner.render(
       (decodedText) => {
+        // Play feedback sound
+        const beep = new Audio('/scanner-sound.mp3');
+        beep.play().catch(e => console.warn("Audio play blocked by browser or file missing", e));
+
         // Stop scanning after success
         scanner.clear();
         onScan(decodedText);
